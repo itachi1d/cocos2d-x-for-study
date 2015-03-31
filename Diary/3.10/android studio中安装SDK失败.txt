@@ -1,0 +1,4 @@
+1,在Android studio 中下载Android SDK失败，提示错误：
+①The following SDK components were not installed: sys-img-x86-addon-google_apis-google-21 and tools.
+②Failed to fetch URL http://dl-ssl.google.com/glass/gdk/addon.xml, reason: Connect Operation timed out
+

@@ -1,0 +1,9 @@
+## cocos2.1.5编辑的动画如何在cocos2dx中调用
+
+# 代码如下
+
+`	Widget* winMenu = static_cast<Widget*>(CSLoader::createNode ("WinScene.csb"));//加载界面
+	timeline::ActionTimeline* action = CSLoader::createTimeline("WinScene.csb");//加载界面中的动画
+	winMenu->runAction(action);
+	action1->gotoFrameAndPlay(0, -1);//在WinScene.csb场景中播放动画
+`

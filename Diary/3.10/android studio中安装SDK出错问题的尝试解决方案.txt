@@ -1,0 +1,11 @@
+在android studio中安装SDK后出错尝试解决方案：
+1.尝试重启android studio，排除生僻因素，重启后发现问题依然没有得到解决。-------未解决
+2.尝试使用搜索引擎搜索问题解决方案。
+	①.使用代理，在ect文件结尾加上可用URL后发现问题依然存在，即使换了几个URL问题依旧。-------未解决
+	②.尝试用已经下载好的android SDK发现问题还是没得到解决。---------未解决
+3.尝试换一种操作系统，换成WIN8系统上安装android studio。
+	换到WIN8系统中问题依然存在，然后通过google看到一个论坛给出的一种解决方法：修改C:\Users\bkw\.AndroidStudio\config\options下面的other.xml
+中的USE_HTTP_PROXY 和 USE_PROXY_PAC属性，最终发现还是没有效果。--------未解决
+4.最后在一片文章中查找到将android studio的根目录中的idea.properties中的的最后一行加上disable.android.first.run=true后，可以跳过开头的SDK
+检查，之后可以直接进入android studio，本来想去单独下载一个android SDK的，结果发现android studio原本指向的sdk路径已经有了android SDK，知道
+了这一点以后，我就直接创建Android studio的第一个项目，接着->创建虚拟机->运行->发现可行！！！----------问题成功解决！

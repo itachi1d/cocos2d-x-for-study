@@ -1,0 +1,5 @@
+1.导入新项目：file->import project->选中项目中的build.gradle文件进行导入。
+
+2.improt Project的时候android studio会自动上网下载gradle,等待时间非常漫长
+解决方法：在http://services.gradle.org/distributions/这个网站上手动下载放入C:\Users\Administrator\.gradle\wrapper\dists\中对应的文件中
+比如gradle-1.12-all.zip放入C:\Users\Administrator\.gradle\wrapper\dists\gradle-1.12-all\2apkk7d25miauqf1pdjp1bm0uo文件夹中，不需要解压。

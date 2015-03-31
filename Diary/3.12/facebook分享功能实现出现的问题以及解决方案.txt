@@ -1,0 +1,28 @@
+在可以登入facebook的基础上完成facebook的分享功能。
+首先，从官网教程上了解到分享分成好几种，我选择了feed Share分享，它可以在应用中使用代码设定好分享的固定内容，标题等，用户也可以发表自己的
+言论再分享。这样比较适合目前的项目。
+1.开始按照步骤创建好ShareActivity后，之后它就说可以开始你的分享了。我看了一下只是一个activity没有可以触发分享的东西啊，于是我猜测是不是本身
+这个activity就已经是分享界面了，于是我搭建好ShareActivity的布局文件后从MainActivity使用Intent跳转到ShareActivity，发现空无一物，然后我继续
+参照官网的教程往下看，终于发现分享代码了：
+		FacebookDialog shareDialog = new FacebookDialog.ShareDialogBuilder(this)
+                .setLink("https://developers.facebook.com/android")
+                .build();
+        uiHelper.trackPendingDialogCall(shareDialog.present());
+2.于是我用一个按钮来触发上面这个方法，运行后程序直接报错退出，经过搜索查找控制台的错误发现以上代码只能使用在已经装上了facebook app的情况下
+才能分享，哎，没办法，只能继续照着官网教程往下看，它说道，想要从未安装facebook app的手机上分享可以使用Feed share，然后贴出了代码（study仓库
+中上传），之后我将代码复制了下来发现getActivity()这个方法没有，于是上网搜索此情况，发现有人用getApplicationContext()代替了，没办法，总之先
+试试看，我也将getApplicationContext()代替了getActivity()，发现没有报错，先就这么着吧。
+
+3.运行程序，点击分享按钮后报错。。。。控制台错误是：Attempted to use a Session that was not open.于是我真对Session为什么没打开展开了一番研究
+，网上的说法奇形怪状，我都试过，均失败，之后我在想是不是我开始的时候出错了，是不是不该新创建一个Activity而是在原来login的MainActivity里面实
+现分享呢？说做就做，于是我将ShareActivity添加的代码全部拷贝到MainActivity中。
+
+4运行程序，Attempted to use a Session that was not open那个错误还是没有解决，于是我决定Google搜索这个错误，经过几个小时的查找，发现了这种解决
+方案http://stackoverflow.com/questions/25979281/facebook-sdk-not-opened-session-state-while-creating-webdialog-feeddialogbuil。我把这个网站
+的解决方案用上后虽然依旧报错，但是不是刚才那个错误了，我猜应该是解决了刚才那个问题，可是新的错误：token null is not for an application该怎么
+解决？
+
+5.晚上回到家我又重新振作，开始搜索这个错误，经过2个小时苦战，终于得到解决：居然只是把ShareActivity.this
+WebDialog feedDialog = (new WebDialog.FeedDialogBuilder(getApplicationContext(),........中的getApplicationContext()换成ShareActivity.this
+就好了.........哎，如此简单，不过也好，分享总算是完成了，就是用江哥的facebook分享了两条信息别介意哈！奋斗了一天 累了 睡觉睡觉！！
+ 

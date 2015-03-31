@@ -1,0 +1,9 @@
+照着官网的步骤一步一步向下执行：
+1.修改新建项目中app中build.gradle文件内容：
+	在dependencies之前添加repositories{mavenCentral()}，并且在dependencies里加上compile 'com.facebook.android:facebook-android-sdk:3.21.1'
+2.将facebook sdk文件夹中的libs文件中的jar包复制到app的libs中，然后rebuild项目，这样就可以Import新导入的facebook的包了。
+3.反复调试后发现需要将libs中的刚刚黏贴的两个jar文件删除，rebuild的时候已经加入librarys里面了，如果不删除会导致运行出错。
+4.在AndroidManifest.xml中加入权限<uses-permission android:name="android.permission.INTERNET" />，否则无法访问Intenet。
+5.生成Hash Key：在cmd中输入keytool -export -alias myAlias -keystore C:\Users\Administrator\.android\debug.keystore | C:\openssl-0.9.8k_WIN32\bin\openssl sha1 -binary | C:\openssl-0.9.8k_WIN32\bin\openssl enc -a -e  
+6.进入https://developers.facebook.com/  facebook开发者网站，登录。然后点击导航栏上的Apps进入应用专区创建一个新的App 点击Create New App 按钮   
+，弹出下面对话框。App Name为给这应用取的一个名字，下面的可以忽略不用填，直接点击继续

@@ -1,0 +1,30 @@
+今天在研究facebook推送信息给好友的的时候偶然测试一下登入功能，发现一个BUG：登入了以后没有记住登入状态，一般登入后回来那个登入按钮log in with
+facebook的文本会变成log out来提供用户登出，但是程序没有记住登入状态，按钮的文本还是log in with facebook没有变，点击后还是会重新登入，于是我
+尝试几种办法解决这个BUG：
+
+1.为了排除偶然因素，按照官网的登入教程重新部署一遍，结果发现还是这样，问题没有解决-------未解决
+
+
+2.我发现分享按钮点击后要求登入，登入后就可以记住登入状态，于是我着重往分享ShareActivity上找到解决方案，我找到ShareActivity的分享前登入按钮的
+代码，在MainActivity换一种登入方式将ShareActivity的分享前登入按钮中的登入部分代码拷贝到MainActivity的自定义登入按钮的事件中，发现还是不行
+-------未解决
+
+3.我在从ShareActivity其它与MainActivity不一样的代码拷贝到MainActivity，结果发现这段代码成功解决记住登入状态的问题：
+@Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+
+        uiHelper.onActivityResult(requestCode, resultCode, data, new FacebookDialog.Callback() {
+            @Override
+            public void onComplete(FacebookDialog.PendingCall pendingCall, Bundle bundle) {
+                Log.i("onComplete", "Success");
+            }
+
+            @Override
+            public void onError(FacebookDialog.PendingCall pendingCall, Exception e, Bundle bundle) {
+                Log.e("Error", String.format("Error: %s", e.toString()));
+            }
+        });
+
+    }
+将代码放入后发现成功记住登入状态，我在将facebook的登入换回原来的facebook自带的loginButton发现也可以成功记住登入状态----------解决！！

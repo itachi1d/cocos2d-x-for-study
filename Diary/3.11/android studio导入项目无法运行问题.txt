@@ -1,0 +1,17 @@
+1.将下载下来的facebook android sdk作为project整个导入进来，却发现不能使用里面的示例，出现Error:(8, 0) Could not find property 'ANDROID_BUILD_SDK_VERSION' on project ':FriendPickerSample'.
+的错误。
+尝试解决以上问题：
+1.通过搜索引擎搜出来通过设置project的MinSDK varsion 与 TargetSDK vasion发现问题消失，但是新的问题又出现了：
+Error:(18, 0) Gradle DSL method not found: 'compile()'
+Possible causes:<ul><li>The project 'facebook-android-sdk-3.23.0' may be using a version of Gradle that does not contain the method.
+<a href="open.wrapper.file">Open Gradle wrapper file</a></li><li>The build file may be missing a Gradle plugin.
+<a href="apply.gradle.plugin">Apply Gradle plugin</a></li>
+ 于是我又通过搜索引擎查询：
+1.尝试将build.gradle删除，发现问题依然存在。----未解决
+2.尝试将build.gradle中的android{}删除，问题依然存在。------未解决
+3.然后我猜测是不是我使用android studio的导入和一些基本操作有问题，于是我先将主要方向改为研究android studio的基本使用：
+①.通过百度查找android studio的使用方法发现基本都是大体的操作，并没有细讲某一步的详细操作以及可能出现的问题，于是我尝试专门搜索一下
+关于android studio导入方面的操作细节以及问题：
+	经搜索后，我照着他们一样的方式导入project，发现结果不一样，我的项目还是出错，之后我清理了一下项目重新打开android studio后再次导入，
+发现还是一样，之后我就在想是不是我要导入的项目与他们导入的项目结构不一样，于是我去搜索了一下android studio可以导入项目的结构
+	

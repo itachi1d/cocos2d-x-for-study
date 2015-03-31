@@ -1,0 +1,10 @@
+经过今天的调试，发现苦于昨天晚上无法登入的问题是app_id使用不正确，今天将江哥facebook账号app_ID替换昨天的以后，发现还是会有错误：
+Failed to find provider info for com.facebook.katana.provider.AttributionIdProvider；
+functionName: stat; errno: No such file or directory；
+然后经过一番搜索和调试猜测这是网络问题，后来在江哥点拨下，我在测试手机下载了一个翻墙软件，然后重新登入，登入功能终于成功！
+总结出一下几点重要点：
+1.流程是3.11号的《facebook sdk接入工程中出现的额问题以及尝试的解决方案.doc》文件走的流程。
+2.libs文件夹下面的jar文件要删除，否则无法运行。
+3.开发模式下只有使用提供app_ID的账号才能登入，
+4.翻墙很重要.
+5.可能使用的过程中会出现意想不到的BUG，如果发现了会进一步完善，接下来完善facebook其它常用功能
