@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<MailBox xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<info number="200001">
+		<name>停服公告</name>
+		<type>1</type>
+		<icon>01504.png</icon>
+		<content>受服务器搬迁影响，本游戏将于XXXX-XX-XX的XX：XX时到XX：XX时停服维护与搬迁，请各位玩家相互通知，并及时领取奖励。</content>
+		<addresser>游戏管家</addresser>
+		<rewardID>210001</rewardID>
+	</info>
+	<info number="200002">
+		<name>节日活动</name>
+		<type>1</type>
+		<icon>01504.png</icon>
+		<content>今天情人节</content>
+		<addresser>游戏管家</addresser>
+		<rewardID>210001</rewardID>
+	</info>
+	<info number="200003">
+		<name>版本更新</name>
+		<type>1</type>
+		<icon>01504.png</icon>
+		<content>3.0版本已经正式上线了，请给位玩家更新！</content>
+		<addresser>游戏管家</addresser>
+		<rewardID>210001</rewardID>
+	</info>
+	<info number="200004">
+		<name>感恩回馈</name>
+		<type>2</type>
+		<icon>01503.png</icon>
+		<content>打开礼盒可获得一件稀有装备</content>
+		<addresser>游戏管家</addresser>
+		<rewardID>210001</rewardID>
+	</info>
+	<info number="200005">
+		<name>退出公会</name>
+		<type>1</type>
+		<icon>01504.png</icon>
+		<content>您与XXXX-XX-XX退出了公会“XXXXXXXXXX”</content>
+		<addresser>公会管家</addresser>
+		<rewardID>210001</rewardID>
+	</info>
+	<info number="200006">
+		<name>远征讨伐</name>
+		<type>2</type>
+		<icon>01503.png</icon>
+		<content>打开礼盒可获得一件稀有装备</content>
+		<addresser>远征军师</addresser>
+		<rewardID>210001</rewardID>
+	</info>
+	<info number="200007">
+		<name>系统补偿</name>
+		<type>2</type>
+		<icon>01503.png</icon>
+		<content>打开礼盒可获得一件稀有装备</content>
+		<addresser>游戏管家</addresser>
+		<rewardID>210001</rewardID>
+	</info>
+	<info number="200008">
+		<name>竞技场奖励</name>
+		<type>2</type>
+		<icon>01503.png</icon>
+		<content>打开礼盒可获得一件稀有装备</content>
+		<addresser>竞技场管理员</addresser>
+		<rewardID>210001</rewardID>
+	</info>
+	<info number="200009">
+		<name>战利品包裹</name>
+		<type>2</type>
+		<icon>01503.png</icon>
+		<content>打开礼盒可获得一件稀有装备</content>
+		<addresser>游戏管家</addresser>
+		<rewardID>210001</rewardID>
+	</info>
+	<info number="200010">
+		<name>成就包裹</name>
+		<type>2</type>
+		<icon>01503.png</icon>
+		<content>打开礼盒可获得一件稀有装备</content>
+		<addresser>游戏管家</addresser>
+		<rewardID>210001</rewardID>
+	</info>
+</MailBox>

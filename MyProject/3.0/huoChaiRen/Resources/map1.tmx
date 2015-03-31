@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="300" height="20" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="map" tilewidth="32" tileheight="32">
+  <image source="map.png" width="640" height="640"/>
+ </tileset>
+ <layer name="background" width="300" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztzjERADAIBLA3Qf37wwSVwR0ZsqeTNAAAAAAAAAAAAAAAALBCfW/BAwAAAAAAAAAAAOCqAXpRg2E=
+  </data>
+ </layer>
+ <layer name="块层 1" width="300" height="20">
+  <data encoding="base64" compression="zlib">
+   eJztmlFSgzAQhlPqCaqgV6D1Cra+qGdQ76D3f3OZNjMIBJKQTTbh/2b2pVPKMqRfdheU4qWmaG7xyHwuUBb9tfOUOBcTXY6VwtouBfgK+JKLr7C2ywG+Ar7AVyA28BXwBb4CsYGvgC/wFYgNfAV8ga9AbKT7aqeuz3f2FHeJcwH/ga9AbKT7aolqJuA4XlqK4y2eE+diAr4qi9x9NUd3PaH3/QPFvSEeFo6tLD8Lca4YvFCcKS4Ur2lTMaKdelLmHHUNbxv7wfE+xwA/SveV1H0fuNP5W4KnQTpK95XUuQqYZgtOQt3ljxRfdTV56HkTfDXGtffJuccx9dOl+3Atb7RI3ik+dqkzGdOfmc71+DkCX43p9qdjoDhFzh3E4ZM89UXxLdBXIZG254bwla77JGOqmabyriPkYXpGgDrHntT/pR+6mb+F+0oaa+bt+r+Xuk+2oV8jL9U/nL5qDefkZAvzLg5CzQSG++Pa3zDdS93bc88uUs49GsP5ba4tp75Hv1cwFUM4fQXiIXXO2KwIm7rAZf2ueZe5VmXMk+beiVrqcQ4e3wvdS8FXgBOJvvLpsbSv8D5UWuArwIlEX225vsod+Apwwv28uXXMxbe+0rNY1FdpcbnfALjyB4P9KBg=
+  </data>
+ </layer>
+ <objectgroup name="start">
+  <object name="sp" x="221.333" y="240" width="53.3333" height="50.6667"/>
+ </objectgroup>
+ <objectgroup name="lu">
+  <object x="1.33333" y="481.333" width="541.333" height="156"/>
+  <object x="704" y="478.667" width="542.667" height="33.3333"/>
+  <object x="768" y="514.667" width="426.667" height="126.667"/>
+  <object x="768" y="4" width="122.667" height="407.333"/>
+  <object x="1374.67" y="418.667" width="66.6667" height="29.3333"/>
+  <object x="1537.33" y="481.333" width="190.667" height="28"/>
+  <object x="1601.33" y="513.333" width="73.3333" height="124"/>
+  <object x="2304" y="222.667" width="256.333" height="33.3333"/>
+  <object x="2528" y="260" width="31" height="249.333"/>
+  <object x="2562" y="480" width="444" height="29.3333"/>
+  <object x="3008" y="446.667" width="64" height="62.6667"/>
+  <object x="3073.33" y="418.667" width="61.3333" height="93.3333"/>
+  <object x="3201.33" y="512" width="288" height="33.3333"/>
+  <object x="3200" y="257.333" width="253.333" height="30.6667"/>
+  <object x="3678.67" y="254.667" width="36" height="34.6667"/>
+  <object x="3837.33" y="257.333" width="34.6667" height="32"/>
+  <object x="3681.33" y="512" width="128" height="30.6667"/>
+  <object x="4064" y="253.333" width="256" height="34.6667"/>
+  <object x="4001.33" y="510.667" width="320" height="29.3333"/>
+  <object x="4384" y="417.333" width="226.667" height="61.3333"/>
+  <object x="4736" y="353.333" width="640" height="277.333"/>
+  <object x="5345.33" y="0" width="97.3337" height="256"/>
+  <object x="5473.33" y="416" width="414.667" height="65.3333"/>
+  <object x="6017.33" y="320" width="61.3333" height="30.6667"/>
+  <object x="6240" y="288" width="64" height="29.3333"/>
+  <object x="6398.67" y="446.667" width="69.3333" height="32"/>
+  <object x="6624" y="352" width="224" height="32"/>
+  <object x="6658.67" y="0" width="91.9997" height="283.334"/>
+  <object x="6945.33" y="257.333" width="414.667" height="32"/>
+  <object x="7453.33" y="254.667" width="321.333" height="32"/>
+  <object x="7841.33" y="318.667" width="129.333" height="34.6667"/>
+  <object x="8128" y="418.667" width="65.3333" height="28"/>
+  <object x="8382.67" y="478.667" width="385.333" height="33.3333"/>
+  <object x="8894.67" y="448" width="704" height="30.6667"/>
+  <object x="1856" y="350.667" width="64.6667" height="32"/>
+  <object x="2049.33" y="193.333" width="95.333" height="29.3333"/>
+ </objectgroup>
+ <objectgroup name="down">
+  <object x="767" y="417.667" width="124.667" height="61.3333"/>
+  <object x="5345.33" y="270.667" width="62.6667" height="77.3333"/>
+  <object x="6660.33" y="284" width="90" height="69"/>
+ </objectgroup>
+</map>

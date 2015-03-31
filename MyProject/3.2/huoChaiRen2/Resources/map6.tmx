@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="300" height="25" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="map" tilewidth="32" tileheight="32">
+  <image source="map.png" width="640" height="640"/>
+ </tileset>
+ <layer name="backgound" width="300" height="25">
+  <data encoding="base64" compression="zlib">
+   eJztw0ENAAAMA6Hzr7UiZmJPSFg1VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVdWHBxT8A6Y=
+  </data>
+ </layer>
+ <layer name="块层 1" width="300" height="25">
+  <data encoding="base64" compression="zlib">
+   eJztnEtSwzAMhh24Qctj2y1wCVZwAVaw4QRwEtoeGXvRmSTNQ2ls+Vf1fzOaYaBOUlF9tpxACPm4j/EQ4zHjMS+9hlxR870QHyDUjUcQ8k5fEWsg1I1HEPJOXxFrINSNRxDyTl8RayDUjUcQ8k5fEWsg1A0ib00I70254yPkfcxXz8Kgr4g2CHWDyGd01ZdDX0mv57U5H8/PECkNQt0g8hPr8Ze+GuXYhG/6imiDUDdIJEXdjERO1uZ9E2Mb4y7DNVzinH0TdvQV0Ya+6jK1B13iPFbXVwfDvkpz0rYVY87fLHzN2vmDzINQN0h48tVTON9DfxGOjf3grj9eOrYmBVt8ogBC3SCh4au/1tqEedeDrrLPaY60MDdqoOGrvaKvohvT+VL/ltZELvmI+Xb61olxTvvptyM/1/DVQeCrtfvpU/cNpJFy1Ped9Lhj+a0BgqvS75N7W/Nwfu0y5wkNXx0V1ldDe1OXxLYX0nEo63XvH/mlnqzh1f49ixxxLXMDgq80+0HPeHcVsQ+CryT9IOmytE9oBsYgfz3EkteS6wTBV+1nAVD6phqU6APafWupYyNFbab6R+7ZTTO3l55A8BUhhEh6LMu+Yk9ASB4Q7kOW9tXa+/g5njFAfWaAEGRy116O2iztK0lIzp0rhs6l4cShv/2Wfo+QGuSuvTUe6F+TZ1/xf4YScg59RV8RYgX6ir4ixAoeffUPAsuFlw==
+  </data>
+ </layer>
+ <objectgroup name="lu">
+  <object x="0" y="640" width="317" height="157"/>
+  <object x="513" y="640" width="669" height="161"/>
+  <object x="609" y="1" width="93" height="570"/>
+  <object x="864" y="417" width="94" height="31"/>
+  <object x="1119" y="255" width="95" height="31"/>
+  <object x="1314" y="673" width="670" height="127"/>
+  <object x="2111" y="674" width="32" height="28"/>
+  <object x="2270" y="672" width="36" height="31"/>
+  <object x="2430" y="675" width="34" height="30"/>
+  <object x="1376" y="416" width="574" height="61"/>
+  <object x="1951" y="449" width="480" height="30"/>
+  <object x="2080" y="414" width="351" height="32"/>
+  <object x="1665" y="1" width="187" height="353"/>
+  <object x="1854" y="2" width="322" height="186"/>
+  <object x="2177" y="1" width="157" height="349"/>
+  <object x="2688" y="545" width="736" height="29"/>
+  <object x="3425" y="513" width="31" height="61"/>
+  <object x="3458" y="480" width="29" height="31"/>
+  <object x="3489" y="451" width="30" height="27"/>
+  <object x="3520" y="416" width="31" height="33"/>
+  <object x="3553" y="385" width="31" height="30"/>
+  <object x="3586" y="353" width="30" height="29"/>
+  <object x="3619" y="321" width="26" height="31"/>
+  <object x="3649" y="289" width="158" height="30"/>
+  <object x="3966" y="289" width="128" height="29"/>
+  <object x="4255" y="291" width="159" height="26"/>
+  <object x="4578" y="417" width="60" height="29"/>
+  <object x="3458" y="545" width="1824" height="29"/>
+  <object x="5536" y="447" width="60" height="32"/>
+  <object x="5919" y="449" width="65" height="29"/>
+  <object x="6305" y="546" width="62" height="29"/>
+  <object x="6529" y="544" width="64" height="29"/>
+  <object x="6847" y="448" width="704" height="31"/>
+  <object x="7200" y="1" width="96" height="381"/>
+  <object x="7649" y="639" width="925" height="162"/>
+  <object x="8831" y="547" width="97" height="250"/>
+  <object x="9121" y="384" width="94" height="418"/>
+  <object x="9378" y="225" width="221" height="573"/>
+ </objectgroup>
+ <objectgroup name="si">
+  <object x="597" y="372" width="9" height="196"/>
+  <object x="1028" y="632" width="87" height="8"/>
+  <object x="1454" y="407" width="113" height="10"/>
+  <object x="1970" y="440" width="105" height="9"/>
+  <object x="2168" y="192" width="8" height="154"/>
+  <object x="3056" y="536" width="111" height="9"/>
+  <object x="3524" y="405" width="28" height="10"/>
+  <object x="3469" y="536" width="1360" height="11"/>
+  <object x="4996" y="537" width="183" height="8"/>
+  <object x="6962" y="439" width="107" height="9"/>
+  <object x="7795" y="631" width="105" height="10"/>
+ </objectgroup>
+ <objectgroup name="down">
+  <object x="610" y="576" width="91" height="62"/>
+  <object x="1664" y="357" width="189" height="58"/>
+  <object x="2177" y="354" width="159" height="59"/>
+  <object x="7201" y="384" width="92" height="62"/>
+ </objectgroup>
+ <objectgroup name="start">
+  <object name="sp" x="209" y="457" width="26" height="24"/>
+ </objectgroup>
+</map>
