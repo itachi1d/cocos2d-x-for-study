@@ -53,7 +53,7 @@ void Loading_Scene_1::update(float dt)
 		returnToGameLayer();
 	}
 	else
-		loadingbar->setPercentage(loadingbar->getPercentage()+0.8f);
+		loadingbar->setPercentage(loadingbar->getPercentage()+1.2f);
 }
 
 void Loading_Scene_1::loadResource()

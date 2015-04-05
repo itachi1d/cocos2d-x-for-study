@@ -12,6 +12,7 @@ std::string banana_name = "banana.png";
 std::string basaha_name = "basaha.png";
 std::string peach_name = "peach.png";
 std::string sandia_name = "sandia.png";
+std::string max_name = "max.png";
 
 std::string Obstacle_name = "Obstacle.png";
 std::string Tiled_name = "tiled.png";

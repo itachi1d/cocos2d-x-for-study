@@ -3,7 +3,7 @@
 #include "Tool.h"
 #include "Contral.h"
 #include "HelloWorldScene.h"
-Fruit::Fruit():is_user_contact(false)
+Fruit::Fruit():is_user_contact(false),level(0)
 {
 
 }
@@ -140,4 +140,36 @@ void Fruit::remove()
 std::string Fruit::getFileName()
 {
 	return file_name;
+}
+
+void Fruit::level_up(int _level)
+{
+	level = _level;
+	FiniteTimeAction * actionOne = Sequence::create(
+		ScaleTo::create(0.1f, 1.5f),
+		ScaleTo::create(0.1f, 1.0f),
+		NULL);
+	switch (level)
+	{
+	case 1:
+		this->setColor(Color3B(50, 50, 255));
+		this->runAction(actionOne);
+		break;
+	case 2:
+		this->setColor(Color3B(50, 255, 50));
+		this->runAction(actionOne);
+		break;
+	case 3:
+		this->setColor(Color3B(255, 50, 50));
+		this->runAction(actionOne);
+		break;
+	case 4:
+		this->runAction(actionOne);
+		this->file_name = max_name;
+		this->setDisplayFrame(Manager::Instance()->frames->spriteFrameByName(file_name));
+		break;
+	default:
+		break;
+	}
+	
 }

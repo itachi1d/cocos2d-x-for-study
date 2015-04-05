@@ -57,7 +57,7 @@ void Contarl::setTouchListener_game2()
 					TILED_WIDTH, TILED_HEIGHT);
 				if(rect2.containsPoint(touPoint))
 				{
-					name = this->fruit->getFileName();int index = name.find('.');name.insert(index, "1");					
+					name = this->fruit->getFileName();int index = name.find('.');name.insert(index, "1");
 					this->fruit->setDisplayFrame(Manager::Instance()->frames->spriteFrameByName(name));
 					break;
 				}
@@ -115,8 +115,31 @@ void Contarl::changePoint(Touch* touch, Event* event)
 				temp_fruit->is_user_contact = true;
 				temp_fruit->run_to_point(fruit->world_point, false);
 				fruit->run_to_point(point, false);
-				change_pos_fruits.push_back(fruit);
-				change_pos_fruits.push_back(temp_fruit);
+				if (temp_fruit->level == 4 || fruit->level == 4)
+				{
+					if(temp_fruit->level == 4 && fruit->level == 4)
+						add_remove_fruit_for_level_4(nullptr);//消除所有的水果
+					else
+					{
+						if (temp_fruit->level == 4)
+						{
+							add_remove_fruit_for_level_4(fruit);
+							xc_fruits.push_back(temp_fruit);
+						}
+						else
+						{
+							add_remove_fruit_for_level_4(temp_fruit);
+							xc_fruits.push_back(fruit);
+						}
+					}
+				}
+				else
+				{
+					change_pos_fruits.push_back(fruit);
+					change_pos_fruits.push_back(temp_fruit);
+				}
+				chang_pos_fruit_number = 2;
+
 				Contarl::is_can_touch = false;
 				break;
 			}
@@ -163,16 +186,25 @@ int Contarl::xiaochu_number(Fruit* fruit)
 		}
 	}
 
-	int width_number = 1;
 	std::vector<Fruit*> temp_fruits;
 	//temp_fruits.push_back(fruit);
+	int width_number = 1;
+	int height_number = 1;
+	int width_cout1 = 0;
+	int width_cout2 = 0;
+	int height_cout1 = 0;
+	int height_cout2 = 0;
 	for (int i = fruit->world_point.world_x+1; i < WORLD_WIDTH; ++i)
 	{
 		Fruit* _fruit = width_map.at(i);
 		if(_fruit)
 		{
-			if (_fruit->type == fruit->type)
+			if (_fruit->type == fruit->type && _fruit->level != 4)
+			{
 				temp_fruits.push_back(_fruit);
+				width_number ++;
+				width_cout1++;
+			}
 			else
 				break;
 		}
@@ -184,8 +216,12 @@ int Contarl::xiaochu_number(Fruit* fruit)
 		Fruit* _fruit = width_map.at(i);
 		if(_fruit)
 		{
-			if (_fruit->type == fruit->type)
+			if (_fruit->type == fruit->type && _fruit->level != 4)
+			{
 				temp_fruits.push_back(_fruit);
+				width_number ++;
+				width_cout2++;
+			}
 			else
 				break;
 		}
@@ -202,8 +238,12 @@ int Contarl::xiaochu_number(Fruit* fruit)
 		Fruit* _fruit = height_map.at(i);
 		if(_fruit)
 		{
-			if (_fruit->type == fruit->type)
+			if (_fruit->type == fruit->type && _fruit->level != 4)
+			{
 				temp_fruits.push_back(_fruit);
+				height_number++;
+				height_cout1++;
+			}
 			else
 				break;
 		}
@@ -215,8 +255,12 @@ int Contarl::xiaochu_number(Fruit* fruit)
 		Fruit* _fruit = height_map.at(i);
 		if(_fruit)
 		{
-			if (_fruit->type == fruit->type)
+			if (_fruit->type == fruit->type && _fruit->level != 4)
+			{
 				temp_fruits.push_back(_fruit);
+				height_number++;
+				height_cout2++;
+			}
 			else
 				break;
 		}
@@ -227,9 +271,31 @@ int Contarl::xiaochu_number(Fruit* fruit)
 	if (temp_fruits.size() >= 3)
 		xc_fruits.insert(xc_fruits.end(), temp_fruits.begin(), temp_fruits.end());
 	temp_fruits.clear();
-
-	//if (xc_fruits.size() != 0)
-		//xc_fruits.push_back(fruit);
+	if(fruit->level == 0)
+	{
+		if (width_number >= 5 || height_number >= 5)//5连消
+		{
+			create_level_fruit(4, fruit);
+			CCLOG("5连消");
+		}
+		else if (width_number >= 3 && height_number >= 3)
+		{
+			if((width_cout1+height_cout1 == 0) || (width_cout1+height_cout2 == 0) || (width_cout2+height_cout1 == 0)
+				|| (width_cout2+height_cout2 == 0))//L消除
+			{
+				create_level_fruit(3, fruit);
+			}
+			else//T型消
+			{
+				create_level_fruit(2, fruit);
+			}
+		}
+		else if (width_number >= 4 || height_number >= 4)//4连消
+		{
+			create_level_fruit(1, fruit);
+			CCLOG("4");
+		}
+	}
 	return xc_fruits.size();
 }
 
@@ -241,13 +307,90 @@ void Contarl::remove_fruits()
 		Fruit* fruit = (Fruit*)*itr;
 		Manager::Instance()->all_fruit.remove(fruit);
 		fruit->removeAnima();
+		teshu_fruit(fruit);//特殊糖果的处理
 	}
 	xc_fruits.clear();
+
+	for (itr = xc_more_fruits.begin(); itr != xc_more_fruits.end(); ++itr)
+	{
+		Fruit* fruit = (Fruit*)*itr;
+		Manager::Instance()->all_fruit.remove(fruit);
+		fruit->removeAnima();
+
+	}
+	xc_more_fruits.clear();
+}
+
+void Contarl::teshu_fruit(Fruit* fruit)
+{
+	switch (fruit->level)
+	{
+	case 1:
+		{
+			std::list<Fruit*>::iterator itr;
+			if (rand()%10 > 4)
+			{
+				for (itr = Manager::Instance()->all_fruit.begin(); itr!=Manager::Instance()->all_fruit.end();++itr)
+				{
+					Fruit* _fruit = (Fruit*)*itr;
+					if (_fruit->world_point.world_x == fruit->world_point.world_x)
+						xc_more_fruits.push_back(_fruit);
+				}
+			}
+			else
+			{
+				for (itr = Manager::Instance()->all_fruit.begin(); itr!=Manager::Instance()->all_fruit.end();++itr)
+				{
+					Fruit* _fruit = (Fruit*)*itr;
+					if (_fruit->world_point.world_y == fruit->world_point.world_y)
+						xc_more_fruits.push_back(_fruit);
+				}
+			}
+		}
+		break;
+	case 2:
+		{
+			std::list<Fruit*>::iterator itr;
+			if (rand()%10 > 4)
+			{
+				for (itr = Manager::Instance()->all_fruit.begin(); itr!=Manager::Instance()->all_fruit.end();++itr)
+				{
+					Fruit* _fruit = (Fruit*)*itr;
+					if (abs(_fruit->world_point.world_x - fruit->world_point.world_x) <= 1)
+						xc_more_fruits.push_back(_fruit);
+				}
+			}
+			else
+			{
+				for (itr = Manager::Instance()->all_fruit.begin(); itr!=Manager::Instance()->all_fruit.end();++itr)
+				{
+					Fruit* _fruit = (Fruit*)*itr;
+					if (abs(_fruit->world_point.world_y - fruit->world_point.world_y) <= 1)
+						xc_more_fruits.push_back(_fruit);
+				}
+			}
+		}
+		break;
+	case 3:
+		{
+			std::list<Fruit*>::iterator itr;
+			for (itr = Manager::Instance()->all_fruit.begin(); itr!=Manager::Instance()->all_fruit.end();++itr)
+			{
+				Fruit* _fruit = (Fruit*)*itr;
+				if (abs(_fruit->world_point.world_y - fruit->world_point.world_y) <= 3 
+					&& abs(_fruit->world_point.world_x - fruit->world_point.world_x) <= 3)
+					xc_more_fruits.push_back(_fruit);
+			}
+		}
+		break;
+	default:
+		break;
+	}
 }
 
 void Contarl::update(float dt)
 {
-	if (finish_anima_fruits == change_pos_fruits.size() && finish_anima_fruits != 0)
+	if (finish_anima_fruits == chang_pos_fruit_number && finish_anima_fruits != 0)
 	{			
 		if(xiao_chu())
 		{
@@ -270,8 +413,43 @@ void Contarl::update(float dt)
 		}
 		finish_anima_fruits = 0;
 		change_pos_fruits.clear();
+		chang_pos_fruit_number = 0;
 	}
 
+}
+
+void Contarl::create_level_fruit(int _level, Fruit* fruit)
+{
+	Fruit *_fruit = Fruit::create(fruit->type);
+	_fruit->level_up(_level);
+	_fruit->set_world_point(fruit->world_point.world_x, fruit->world_point.world_y);
+	addChild(_fruit, 30);
+	Manager::Instance()->all_fruit.push_back(_fruit);
+}
+
+void Contarl::add_remove_fruit_for_level_4(Fruit* fruit)
+{
+	if (fruit)//消除地图所有相同类型的水果
+	{
+		int _type = fruit->type;
+		std::list<Fruit*>::iterator itr;
+		for (itr = Manager::Instance()->all_fruit.begin(); itr != Manager::Instance()->all_fruit.end(); )
+		{
+			Fruit* _fruit = (Fruit*)*itr;
+			if(_type == _fruit->type && _fruit->level != 4)
+			{
+				xc_fruits.push_back(_fruit);
+				itr = Manager::Instance()->all_fruit.erase(itr);
+			}
+			else
+				++itr;
+		}
+	}
+	else//消除所有的水果
+	{
+		xc_fruits.insert(xc_fruits.end(), Manager::Instance()->all_fruit.begin(), Manager::Instance()->all_fruit.end());
+		Manager::Instance()->all_fruit.clear();
+	}
 }
 
 bool Contarl::is_can_touch = true;

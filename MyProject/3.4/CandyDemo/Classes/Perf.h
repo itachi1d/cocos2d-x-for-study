@@ -14,6 +14,8 @@ extern std::string basaha_name;
 extern std::string peach_name;
 extern std::string sandia_name;
 
+extern std::string max_name;
+
 extern std::string Obstacle_name;
 extern std::string Tiled_name;
 

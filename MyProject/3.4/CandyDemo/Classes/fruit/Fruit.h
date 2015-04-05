@@ -17,12 +17,14 @@ public:
 	void updatePoint_with_xc();
 	void remove();
 	std::string getFileName();
+	void level_up(int _level);
 private:
 	static Fruit* createWithSpriteFrame(SpriteFrame *spriteFrame, int type);
 	static Fruit* createWithSpriteFrameName(const std::string& spriteFrameName, int type);
 
 public:
 	int type;
+	int level;
 	MyPoint world_point;
 	bool is_user_contact;
 private:

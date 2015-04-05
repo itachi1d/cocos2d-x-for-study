@@ -82,7 +82,7 @@
                 <key>sourceSize</key>
                 <string>{80,80}</string>
             </dict>
-            <key>peach.png</key>
+            <key>max.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{2,84},{80,80}}</string>
@@ -95,7 +95,7 @@
                 <key>sourceSize</key>
                 <string>{80,80}</string>
             </dict>
-            <key>peach1.png</key>
+            <key>max1.png</key>
             <dict>
                 <key>frame</key>
                 <string>{{84,84},{80,80}}</string>
@@ -108,10 +108,36 @@
                 <key>sourceSize</key>
                 <string>{80,80}</string>
             </dict>
+            <key>peach.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{166,84},{80,80}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{80,80}}</string>
+                <key>sourceSize</key>
+                <string>{80,80}</string>
+            </dict>
+            <key>peach1.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{248,84},{80,80}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{80,80}}</string>
+                <key>sourceSize</key>
+                <string>{80,80}</string>
+            </dict>
             <key>sandia.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{166,84},{80,69}}</string>
+                <string>{{330,84},{80,69}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -124,7 +150,7 @@
             <key>sandia1.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{248,84},{80,69}}</string>
+                <string>{{412,84},{80,69}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -137,7 +163,7 @@
             <key>tiled.png</key>
             <dict>
                 <key>frame</key>
-                <string>{{330,84},{80,80}}</string>
+                <string>{{2,166},{80,80}}</string>
                 <key>offset</key>
                 <string>{0,0}</string>
                 <key>rotated</key>
@@ -157,7 +183,7 @@
             <key>size</key>
             <string>{512,512}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:5770c176fee07a0da328e8a436ebe5e6:1/1$</string>
+            <string>$TexturePacker:SmartUpdate:7ef1d82880d25665f4ed03166023e5ac:1/1$</string>
             <key>textureFileName</key>
             <string>0.png</string>
         </dict>

@@ -110,11 +110,12 @@ Fruit* Manager::random_fruit(MyPoint myPoint)
 		
 	}
 	int _type = rand()%fruit_number;
+	int _random = rand()%10;
 	if(x_flag)
 	{
 		if(_type == x_type)
 		{
-			if(rand()%10 > 4)
+			if(_random > 4)
 			{
 				_type++;
 				if(_type > fruit_number-1)
@@ -132,7 +133,7 @@ Fruit* Manager::random_fruit(MyPoint myPoint)
 	{
 		if(_type == y_type)
 		{
-			if(rand()%10 > 4)
+			if(_random > 4)
 			{
 				_type++;
 				if(_type > fruit_number-1)
