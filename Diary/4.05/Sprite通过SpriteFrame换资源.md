@@ -1,3 +1,3 @@
-## SpriteÍ¨¹ýSpriteFrame»»×ÊÔ´
+ï»¿## Spriteé€šè¿‡SpriteFrameæ¢èµ„æº
 
-* sprite->setDisplayFrame(Manager::Instance()->frames->spriteFrameByName(file_name))
+* sprite->setDisplayFrame(SpriteFrameCache::getInstance()->spriteFrameByName(file_name))
