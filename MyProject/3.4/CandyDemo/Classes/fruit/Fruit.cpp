@@ -3,7 +3,7 @@
 #include "Tool.h"
 #include "Contral.h"
 #include "HelloWorldScene.h"
-Fruit::Fruit():is_user_contact(false),level(0)
+Fruit::Fruit():is_user_contact(false),level(0),isMove(false),speed(0),is_change_pos(false)
 {
 
 }
@@ -92,7 +92,7 @@ void Fruit::run_to_point(MyPoint point, bool isback)
 	if(isback)
 		actionOne = Sequence::create(
 		action,
-		CallFunc::create(this, CC_CALLFUNC_SELECTOR(Fruit::updatePoint)),
+		CallFunc::create(this, CC_CALLFUNC_SELECTOR(Fruit::updatePoint_with_noxc)),
 		NULL);
 	else
 		actionOne = Sequence::create(
@@ -100,6 +100,7 @@ void Fruit::run_to_point(MyPoint point, bool isback)
 		CallFunc::create(this, CC_CALLFUNC_SELECTOR(Fruit::updatePoint_with_xc)),
 		NULL);
 	this->runAction(actionOne);
+	actionOne->setTag(1);
 }
 void Fruit::removeAnima()
 {
@@ -121,20 +122,53 @@ void Fruit::updatePoint_with_xc()
 	this->world_point.set_world_point(point.world_x, point.world_y);
 	layer->contarl->finish_anima_fruits++;
 }
+void Fruit::updatePoint_with_noxc()
+{
+	this->world_point.true_x = this->getPositionX();
+	this->world_point.true_y = this->getPositionY();
+	MyPoint point = Tool::true_to_world(Point(world_point.true_x, world_point.true_y));
+	this->world_point.set_world_point(point.world_x, point.world_y);
+	
+}
+
 void Fruit::updatePoint()
 {
 	this->world_point.true_x = this->getPositionX();
 	this->world_point.true_y = this->getPositionY();
 	MyPoint point = Tool::true_to_world(Point(world_point.true_x, world_point.true_y));
 	this->world_point.set_world_point(point.world_x, point.world_y);
-	Contarl::is_can_touch = true;
+}
+
+void Fruit::updatePointandopenmove()
+{
+	Scene *scene = Director::getInstance()->getRunningScene();
+	Game_Scene_1* layer = (Game_Scene_1*)scene->getChildByTag(0);
+	this->world_point.true_x = this->getPositionX();
+	this->world_point.true_y = this->getPositionY();
+	MyPoint point = Tool::true_to_world(Point(world_point.true_x, world_point.true_y));
+	this->world_point.set_world_point(point.world_x, point.world_y);
+	is_change_pos = false;
+	layer->contarl->isMove = true;
+}
+
+void Fruit::change_x_pos(MyPoint point)
+{
+	this->open_move();
+	is_change_pos = true;
+	MoveTo* action = MoveTo::create(0.3f, Point(point.true_x, point.true_y));
+	FiniteTimeAction* actionOne = Sequence::create(
+		action,
+		CallFunc::create(this, CC_CALLFUNC_SELECTOR(Fruit::updatePointandopenmove)),
+		NULL);
+	this->runAction(actionOne);
+	
 }
 
 void Fruit::remove()
 {
 	this->removeFromParentAndCleanup(true);
 	Scene *scene = Director::getInstance()->getRunningScene();
-	Contarl::is_can_touch = true;
+	//Contarl::is_can_touch = true;
 }
 
 std::string Fruit::getFileName()
@@ -172,4 +206,15 @@ void Fruit::level_up(int _level)
 		break;
 	}
 	
+}
+
+void Fruit::open_move()
+{
+	isMove = true;
+}
+
+void Fruit::off_move()
+{
+	isMove = false;
+	speed = 0;
 }

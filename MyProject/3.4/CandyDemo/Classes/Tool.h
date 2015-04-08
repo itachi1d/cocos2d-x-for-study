@@ -30,7 +30,13 @@ class Tool
 
 	static MyPoint true_to_world(Point point)
 	{
-		return MyPoint((point.x-zero_point.x-TILED_WIDTH/2)/TILED_WIDTH, (point.y-zero_point.y-TILED_HEIGHT/2)/TILED_HEIGHT);
+		float x = (point.x-zero_point.x-TILED_WIDTH/2)/TILED_WIDTH;
+		float y = (point.y-zero_point.y-TILED_HEIGHT/2)/TILED_HEIGHT;
+		if(x*10-((int)x)*10 > 5)
+			x++;
+		if(y*10-((int)y)*10 > 5)
+			y++;
+		return MyPoint(x, y);
 	}
 	/*static std::string GBKToUTF8( const char* strGBK ) 
 	{ 

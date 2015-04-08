@@ -6,7 +6,7 @@ extern int WORLD_HEIGHT;
 extern float TILED_WIDTH;
 extern float TILED_HEIGHT;
 extern Point zero_point;
-
+extern float Gravity;
 //----------×ÊÔ´Ãû×Ö----------
 extern std::string apple_name;
 extern std::string banana_name;

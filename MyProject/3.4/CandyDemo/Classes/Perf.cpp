@@ -4,7 +4,7 @@ int WORLD_HEIGHT = 8;
 
 float TILED_WIDTH = 80;
 float TILED_HEIGHT = 80;
-
+float Gravity = 10;
 Point zero_point(0, 200);
 
 std::string apple_name = "apple.png";
