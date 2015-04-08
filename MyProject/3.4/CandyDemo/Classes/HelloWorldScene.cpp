@@ -29,7 +29,7 @@ bool Game_Scene_1::init()
     }
 	contarl = Contarl::create();
 	addChild(contarl);
-	Manager::Instance()->add_all_tiled(contarl);
+	GameManager::Instance()->add_all_tiled(contarl);
 	contarl->setTouchListener_game1();
     
 	startItem = MenuItemImage::create(
@@ -46,8 +46,8 @@ bool Game_Scene_1::init()
 
 void Game_Scene_1::menuCloseCallback(Ref* pSender)
 {	
-	Manager::Instance()->init_obstacle();
-	Manager::Instance()->init_all_fruit(contarl);
+	GameManager::Instance()->init_obstacle();
+	GameManager::Instance()->init_all_fruit(contarl);
 	contarl->remove_touch_1();
 	contarl->setTouchListener_game2();
 	contarl->scheduleUpdate();

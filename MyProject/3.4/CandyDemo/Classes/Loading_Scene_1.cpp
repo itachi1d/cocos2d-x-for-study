@@ -1,5 +1,5 @@
 #include "Loading_Scene_1.h"
-#include "Manager/Manager.h"
+#include "Manager.h"
 #include "Tool.h"
 #include "Perf.h"
 #include "HelloWorldScene.h"
@@ -66,7 +66,7 @@ void Loading_Scene_1::loadResource()
 		name = "pic/" + Tool::toString(x) +".png";
 		if(!FileUtils::getInstance()->isFileExist(name))
 			break;
-		Manager::Instance()->texture->addImageAsync(name, CC_CALLBACK_1(Loading_Scene_1::plistImageAsyncCallback1, this));
+		GameManager::Instance()->texture->addImageAsync(name, CC_CALLBACK_1(Loading_Scene_1::plistImageAsyncCallback1, this));
 		x += 1;
 	}
 }
@@ -75,7 +75,7 @@ void Loading_Scene_1::plistImageAsyncCallback1(cocos2d::Texture2D* texture)
 {
 	std::string name;
 	name = "pic/" + Tool::toString(i) +".plist";
-	Manager::Instance()->frames->addSpriteFramesWithFile(name, texture);
+	GameManager::Instance()->frames->addSpriteFramesWithFile(name, texture);
 	sum += (1.0f/(float)MaxFiles)*100;
 	i += 1;
 }
@@ -83,7 +83,7 @@ void Loading_Scene_1::plistImageAsyncCallback1(cocos2d::Texture2D* texture)
 
 void Loading_Scene_1::returnToGameLayer()
 {
-	Manager::Instance()->init_map();
+	GameManager::Instance()->init_map();
 	
 	auto scene = Game_Scene_1::createScene();
 	Director::getInstance()->replaceScene(scene);

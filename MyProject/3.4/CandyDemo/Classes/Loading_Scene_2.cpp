@@ -1,5 +1,5 @@
 #include "Loading_Scene_2.h"
-#include "Manager/Manager.h"
+#include "Manager.h"
 #include "GameLayer.h"
 
 USING_NS_CC;
@@ -40,7 +40,7 @@ void Loading_Scene_2::startLoading(float dt)
 void Loading_Scene_2::loadingGameDate()
 {
 
-	Manager::Instance()->init_obstacle();
+	GameManager::Instance()->init_obstacle();
 	auto scene = GameLayer::createScene();
 	Director::getInstance()->replaceScene(scene);
 

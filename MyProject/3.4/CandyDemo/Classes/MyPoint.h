@@ -10,7 +10,7 @@ public:
 	MyPoint();
 	MyPoint(int _x, int _y);
 	void set_world_point(int _x, int _y);
-	void set_world_point(MyPoint& p);
+	void set_world_point(MyPoint p);
 	const bool operator==(const MyPoint& p);
 	Point get_true_point();
 public:

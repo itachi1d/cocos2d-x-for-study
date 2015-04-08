@@ -2,7 +2,7 @@
 #define __HELLOWORLD_SCENE_H__
 
 #include "cocos2d.h"
-#include "Manager/Manager.h"
+#include "Manager.h"
 using namespace cocos2d;
 class Game_Scene_1 : public cocos2d::Layer
 {

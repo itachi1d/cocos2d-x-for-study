@@ -21,7 +21,7 @@ void MyPoint::set_world_point(int _x, int _y)
 	true_y = zero_point.y + world_y*TILED_HEIGHT+TILED_HEIGHT/2;
 }
 
-void MyPoint::set_world_point(MyPoint& p)
+void MyPoint::set_world_point(MyPoint p)
 {
 	set_world_point(p.world_x, p.world_y);
 }

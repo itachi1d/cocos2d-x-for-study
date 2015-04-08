@@ -2,7 +2,7 @@
 #define _CONTARL_
 
 #include "cocos2d.h"
-#include "fruit/Fruit.h"
+#include "Fruit.h"
 using namespace cocos2d;
 class Contarl : public Layer
 {

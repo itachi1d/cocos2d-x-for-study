@@ -1,5 +1,5 @@
 #include "Contral.h"
-#include "Manager/Manager.h"
+#include "Manager.h"
 #include "Perf.h"
 #include "Tool.h"
 
@@ -16,7 +16,7 @@ void Contarl::setTouchListener_game1()
 		if(rect1.containsPoint(touPoint))
 		{
 			std::vector<Sprite*>::iterator itr;
-			for(itr = Manager::Instance()->all_Tiled.begin(); itr!=Manager::Instance()->all_Tiled.end(); ++itr)
+			for(itr = GameManager::Instance()->all_Tiled.begin(); itr!=GameManager::Instance()->all_Tiled.end(); ++itr)
 			{
 				Sprite* tiled = (Sprite*)*itr;
 				Rect rect2(tiled->getPositionX()-TILED_WIDTH/2, tiled->getPositionY()-TILED_HEIGHT/2,
@@ -51,7 +51,7 @@ void Contarl::setTouchListener_game2()
 		{
 			std::list<Fruit*>::iterator itr;
 			std::string name;
-			for(itr = Manager::Instance()->all_fruit.begin(); itr!=Manager::Instance()->all_fruit.end(); ++itr)
+			for(itr = GameManager::Instance()->all_fruit.begin(); itr!=GameManager::Instance()->all_fruit.end(); ++itr)
 			{
 				Fruit* t_ftuit = (Fruit*)*itr;
 				if(t_ftuit->getActionByTag(1) != nullptr)
@@ -62,7 +62,7 @@ void Contarl::setTouchListener_game2()
 				{
 					this->touch_fruit = t_ftuit;
 					name = this->touch_fruit->getFileName();int index = name.find('.');name.insert(index, "1");
-					this->touch_fruit->setDisplayFrame(Manager::Instance()->frames->spriteFrameByName(name));
+					this->touch_fruit->setDisplayFrame(GameManager::Instance()->frames->spriteFrameByName(name));
 					break;
 				}
 			}
@@ -73,7 +73,7 @@ void Contarl::setTouchListener_game2()
 	listener2->onTouchEnded = [=](Touch* touch, Event* event){
 		if (this->touch_fruit)
 		{
-			this->touch_fruit->setDisplayFrame(Manager::Instance()->frames->spriteFrameByName(this->touch_fruit->getFileName()));
+			this->touch_fruit->setDisplayFrame(GameManager::Instance()->frames->spriteFrameByName(this->touch_fruit->getFileName()));
 			this->touch_fruit = nullptr;
 			is_touch_move = true;
 		}
@@ -111,7 +111,7 @@ void Contarl::changePoint(Touch* touch, Event* event)
 		if(point.world_x < 0 || point.world_x > 7 || point.world_y < 0 || point.world_y > 7)
 			return;
 		std::list<Fruit*>::iterator itr;
-		for(itr = Manager::Instance()->all_fruit.begin(); itr!=Manager::Instance()->all_fruit.end(); ++itr)
+		for(itr = GameManager::Instance()->all_fruit.begin(); itr!=GameManager::Instance()->all_fruit.end(); ++itr)
 		{
 			Fruit* temp_fruit = (Fruit*)*itr;
 			if(temp_fruit->world_point == point && temp_fruit->getActionByTag(1) == nullptr)
@@ -150,7 +150,7 @@ void Contarl::changePoint(Touch* touch, Event* event)
 				//listener2->setEnabled(false);
 				if (this->touch_fruit)
 				{
-					this->touch_fruit->setDisplayFrame(Manager::Instance()->frames->spriteFrameByName(this->touch_fruit->getFileName()));
+					this->touch_fruit->setDisplayFrame(GameManager::Instance()->frames->spriteFrameByName(this->touch_fruit->getFileName()));
 					//this->touch_fruit = nullptr;
 				}
 				return;
@@ -185,7 +185,7 @@ int Contarl::xiaochu_number(Fruit* fruit)
 	//std::map<int, Fruit*> width_map;
 	//std::map<int, Fruit*> height_map;
 	std::list<Fruit*>::iterator itr;
-	for (itr = Manager::Instance()->all_fruit.begin(); itr!=Manager::Instance()->all_fruit.end(); ++itr)
+	for (itr = GameManager::Instance()->all_fruit.begin(); itr!=GameManager::Instance()->all_fruit.end(); ++itr)
 	{
 		Fruit* temp_fruit = (Fruit*)*itr;
 		if (temp_fruit->world_point.world_y == fruit->world_point.world_y)
@@ -336,7 +336,7 @@ void Contarl::remove_fruits()
 	for (itr = xc_fruits.begin(); itr != xc_fruits.end(); ++itr)
 	{
 		Fruit* fruit = (Fruit*)*itr;
-		Manager::Instance()->all_fruit.remove(fruit);
+		GameManager::Instance()->all_fruit.remove(fruit);
 		fruit->removeAnima();
 		teshu_fruit(fruit);//特殊糖果的处理
 		if(find(xc_more_points.begin(), xc_more_points.end(), fruit->world_point) == xc_more_points.end()
@@ -348,7 +348,7 @@ void Contarl::remove_fruits()
 	for (itr = xc_more_fruits.begin(); itr != xc_more_fruits.end(); ++itr)
 	{
 		Fruit* fruit = (Fruit*)*itr;
-		Manager::Instance()->all_fruit.remove(fruit);
+		GameManager::Instance()->all_fruit.remove(fruit);
 		fruit->removeAnima();
 		if(find(xc_more_points.begin(), xc_more_points.end(), fruit->world_point) == xc_more_points.end()
 			&& find(xc_points.begin(), xc_points.end(), fruit->world_point) == xc_points.end())
@@ -359,7 +359,7 @@ void Contarl::remove_fruits()
 	for (itr = add_teshu_fruit.begin(); itr != add_teshu_fruit.end(); ++itr)
 	{
 		addChild(*itr, 30);
-		Manager::Instance()->all_fruit.push_back(*itr);
+		GameManager::Instance()->all_fruit.push_back(*itr);
 	}
 
 	add_teshu_fruit.clear();
@@ -377,7 +377,7 @@ void Contarl::teshu_fruit(Fruit* fruit)
 			std::list<Fruit*>::iterator itr;
 			if (rand()%10 > 4)
 			{
-				for (itr = Manager::Instance()->all_fruit.begin(); itr!=Manager::Instance()->all_fruit.end();++itr)
+				for (itr = GameManager::Instance()->all_fruit.begin(); itr!=GameManager::Instance()->all_fruit.end();++itr)
 				{
 					Fruit* _fruit = (Fruit*)*itr;
 					if (_fruit->world_point.world_x == fruit->world_point.world_x)
@@ -389,7 +389,7 @@ void Contarl::teshu_fruit(Fruit* fruit)
 			}
 			else
 			{
-				for (itr = Manager::Instance()->all_fruit.begin(); itr!=Manager::Instance()->all_fruit.end();++itr)
+				for (itr = GameManager::Instance()->all_fruit.begin(); itr!=GameManager::Instance()->all_fruit.end();++itr)
 				{
 					Fruit* _fruit = (Fruit*)*itr;
 					if (_fruit->world_point.world_y == fruit->world_point.world_y)
@@ -406,7 +406,7 @@ void Contarl::teshu_fruit(Fruit* fruit)
 			std::list<Fruit*>::iterator itr;
 			if (rand()%10 > 4)
 			{
-				for (itr = Manager::Instance()->all_fruit.begin(); itr!=Manager::Instance()->all_fruit.end();++itr)
+				for (itr = GameManager::Instance()->all_fruit.begin(); itr!=GameManager::Instance()->all_fruit.end();++itr)
 				{
 					Fruit* _fruit = (Fruit*)*itr;
 					if (abs(_fruit->world_point.world_x - fruit->world_point.world_x) <= 1)
@@ -418,7 +418,7 @@ void Contarl::teshu_fruit(Fruit* fruit)
 			}
 			else
 			{
-				for (itr = Manager::Instance()->all_fruit.begin(); itr!=Manager::Instance()->all_fruit.end();++itr)
+				for (itr = GameManager::Instance()->all_fruit.begin(); itr!=GameManager::Instance()->all_fruit.end();++itr)
 				{
 					Fruit* _fruit = (Fruit*)*itr;
 					if (abs(_fruit->world_point.world_y - fruit->world_point.world_y) <= 1)
@@ -433,7 +433,7 @@ void Contarl::teshu_fruit(Fruit* fruit)
 	case 3:
 		{
 			std::list<Fruit*>::iterator itr;
-			for (itr = Manager::Instance()->all_fruit.begin(); itr!=Manager::Instance()->all_fruit.end();++itr)
+			for (itr = GameManager::Instance()->all_fruit.begin(); itr!=GameManager::Instance()->all_fruit.end();++itr)
 			{
 				Fruit* _fruit = (Fruit*)*itr;
 				if (abs(_fruit->world_point.world_y - fruit->world_point.world_y) <= 2 
@@ -455,7 +455,7 @@ void Contarl::create_new_fruits()
 	isMove = true;
 	std::list<Fruit*>::iterator itr1;
 	std::vector<MyPoint>::iterator itr2;
-	for (itr1 = Manager::Instance()->all_fruit.begin(); itr1 != Manager::Instance()->all_fruit.end(); ++itr1)
+	for (itr1 = GameManager::Instance()->all_fruit.begin(); itr1 != GameManager::Instance()->all_fruit.end(); ++itr1)
 	{
 		Fruit* _fruit = (Fruit*)*itr1;
 		for (itr2 = xc_points.begin(); itr2 != xc_points.end(); ++itr2)
@@ -475,7 +475,7 @@ void Contarl::create_new_fruits()
 
 	std::map<int, int> heightest;//最高障碍物的Y坐标
 	std::vector<MyPoint>::iterator itr3;
-	for (itr3 = Manager::Instance()->all_Obstacle.begin(); itr3 != Manager::Instance()->all_Obstacle.end(); ++itr3)
+	for (itr3 = GameManager::Instance()->all_Obstacle.begin(); itr3 != GameManager::Instance()->all_Obstacle.end(); ++itr3)
 	{
 		MyPoint obs_point = (MyPoint)*itr3;
 		if(heightest.find(obs_point.world_x) == heightest.end())
@@ -503,7 +503,7 @@ void Contarl::create_new_fruits()
 		new_fruit->open_move();
 		this->addChild(new_fruit, 30);
 		change_pos_fruits.push_back(new_fruit);
-		Manager::Instance()->all_fruit.push_back(new_fruit);
+		GameManager::Instance()->all_fruit.push_back(new_fruit);
 	}
 	xc_points.clear();
 
@@ -586,7 +586,7 @@ void Contarl::update(float dt)
 					{
 						bool flag2 = true;
 						std::list<Fruit*>::iterator itr1;
-						for (itr1 = Manager::Instance()->all_fruit.begin(); itr1 != Manager::Instance()->all_fruit.end(); ++itr1)
+						for (itr1 = GameManager::Instance()->all_fruit.begin(); itr1 != GameManager::Instance()->all_fruit.end(); ++itr1)
 						{
 							Fruit* fruit = (Fruit*)*itr1;
 							if(fruit->world_point.world_x == _fruit->world_point.world_x 
@@ -604,7 +604,7 @@ void Contarl::update(float dt)
 						if(flag2)//如果上面代码在下方没找到水果就判断下方是否有阻挡物
 						{
 							std::vector<MyPoint>::iterator itr2;
-							for (itr2 = Manager::Instance()->all_Obstacle.begin(); itr2 != Manager::Instance()->all_Obstacle.end(); ++itr2)
+							for (itr2 = GameManager::Instance()->all_Obstacle.begin(); itr2 != GameManager::Instance()->all_Obstacle.end(); ++itr2)
 							{
 								MyPoint obs_point = (MyPoint)*itr2;
 								if(_fruit->world_point.world_x == obs_point.world_x && 
@@ -641,7 +641,7 @@ bool Contarl::is_change_x()
 	std::vector<MyPoint>::iterator itr3;
 	std::map<int, MyPoint> points;
 	std::map<int, Fruit*> max_height_fruit;
-	for (itr1 = Manager::Instance()->all_fruit.begin(); itr1 != Manager::Instance()->all_fruit.end(); ++itr1)
+	for (itr1 = GameManager::Instance()->all_fruit.begin(); itr1 != GameManager::Instance()->all_fruit.end(); ++itr1)
 	{
 	 	Fruit* fruit = (Fruit*)*itr1;
 		if(fruit->isMove || fruit->world_point.world_y == 0)
@@ -653,7 +653,7 @@ bool Contarl::is_change_x()
 		bool flag_2 = true;
 		int i = 0;
 		int j = 0;
-		for (itr3 = Manager::Instance()->all_Obstacle.begin(); itr3 != Manager::Instance()->all_Obstacle.end(); ++ itr3)
+		for (itr3 = GameManager::Instance()->all_Obstacle.begin(); itr3 != GameManager::Instance()->all_Obstacle.end(); ++ itr3)
 		{
 			MyPoint _point = (MyPoint)*itr3;
 			if(_point.world_x == point1.world_x && flag_1)
@@ -679,7 +679,7 @@ bool Contarl::is_change_x()
 		if(!flag_1 && !flag_2)
 			continue;
 		
-		for (itr2 = Manager::Instance()->all_fruit.begin(); itr2 != Manager::Instance()->all_fruit.end(); ++itr2)
+		for (itr2 = GameManager::Instance()->all_fruit.begin(); itr2 != GameManager::Instance()->all_fruit.end(); ++itr2)
 		{
 			Fruit* _fruit = (Fruit*)*itr2;
 			if(_fruit->world_point == point1)
@@ -765,13 +765,13 @@ void Contarl::add_remove_fruit_for_level_4(Fruit* fruit)
 	{
 		int _type = fruit->type;
 		std::list<Fruit*>::iterator itr;
-		for (itr = Manager::Instance()->all_fruit.begin(); itr != Manager::Instance()->all_fruit.end(); )
+		for (itr = GameManager::Instance()->all_fruit.begin(); itr != GameManager::Instance()->all_fruit.end(); )
 		{
 			Fruit* _fruit = (Fruit*)*itr;
 			if(_type == _fruit->type && _fruit->level != 4)
 			{
 				xc_fruits.push_back(_fruit);
-				itr = Manager::Instance()->all_fruit.erase(itr);
+				itr = GameManager::Instance()->all_fruit.erase(itr);
 			}
 			else
 				++itr;
@@ -779,8 +779,8 @@ void Contarl::add_remove_fruit_for_level_4(Fruit* fruit)
 	}
 	else//消除所有的水果
 	{
-		xc_fruits.insert(xc_fruits.end(), Manager::Instance()->all_fruit.begin(), Manager::Instance()->all_fruit.end());
-		Manager::Instance()->all_fruit.clear();
+		xc_fruits.insert(xc_fruits.end(), GameManager::Instance()->all_fruit.begin(), GameManager::Instance()->all_fruit.end());
+		GameManager::Instance()->all_fruit.clear();
 	}
 }
 

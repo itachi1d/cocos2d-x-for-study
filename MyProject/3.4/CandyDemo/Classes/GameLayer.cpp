@@ -1,5 +1,5 @@
 #include "GameLayer.h"
-#include "Manager/Manager.h"
+#include "Manager.h"
 USING_NS_CC;
 
 Scene* GameLayer::createScene()
@@ -28,9 +28,9 @@ bool GameLayer::init()
 	}
 	Contarl* contarl = Contarl::create();
 	addChild(contarl);
-	Manager::Instance()->add_all_tiled(contarl);
+	GameManager::Instance()->add_all_tiled(contarl);
 	//contarl->setTouchListener();
-	Manager::Instance()->all_Obstacle;
+	GameManager::Instance()->all_Obstacle;
 	return true;
 }
 
