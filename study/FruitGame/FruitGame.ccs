@@ -1,0 +1,88 @@
+<Solution>
+  <PropertyGroup Name="FruitGame" Version="3.10.0.0" Type="CocosStudio" />
+  <SolutionFolder>
+    <Group ctype="ResourceGroup">
+      <RootFolder Name=".">
+        <Folder Name="button">
+          <Image Name="about.png" />
+          <Image Name="about_off.png" />
+          <Image Name="back.png" />
+          <Image Name="back_off.png" />
+          <Image Name="Bird.png" />
+          <Image Name="Bird_off.png" />
+          <Image Name="continue.png" />
+          <Image Name="continue_off.png" />
+          <Image Name="continue_pause.png" />
+          <Image Name="exit.png" />
+          <Image Name="exit_off.png" />
+          <Image Name="Fruit.png" />
+          <Image Name="Fruit_off.png" />
+          <Image Name="help.png" />
+          <Image Name="help_off.png" />
+          <Image Name="menu.png" />
+          <Image Name="menu_off.png" />
+          <Image Name="next.png" />
+          <Image Name="next_off.png" />
+          <Image Name="pause.png" />
+          <Image Name="rank.png" />
+          <Image Name="rank_off.png" />
+          <Image Name="replay.png" />
+          <Image Name="replay_off.png" />
+          <Image Name="set.png" />
+          <Image Name="set_off.png" />
+          <Image Name="sound_off.png" />
+          <Image Name="sound_on.png" />
+          <Image Name="sound_stop.png" />
+          <Image Name="start.png" />
+          <Image Name="start_off.png" />
+        </Folder>
+        <Folder Name="fonts">
+          <TTF Name="FZKATJW.ttf" />
+          <Fnt Name="fzkt.fnt" />
+        </Folder>
+        <Folder Name="pic">
+          <Image Name="aboutP.png" />
+          <File Name="bird.plist" />
+          <Image Name="birdP.png" />
+          <Image Name="blood.png" />
+          <Image Name="column1.png" />
+          <Image Name="column2.png" />
+          <Image Name="fire.png" />
+          <Image Name="floor.png" />
+          <Image Name="fruit0.png" />
+          <Image Name="fruit1.png" />
+          <Image Name="fruit2.png" />
+          <Image Name="fruit3.png" />
+          <Image Name="fruit4.png" />
+          <Image Name="gameOver.png" />
+          <Image Name="gold.png" />
+          <Image Name="help0.png" />
+          <Image Name="help1.png" />
+          <Image Name="help2.png" />
+          <Image Name="help3.png" />
+          <Image Name="helpBack.png" />
+          <Image Name="morning.png" />
+          <Image Name="music.png" />
+          <Image Name="night.png" />
+          <Image Name="number.png" />
+          <Image Name="rankBackground.png" />
+          <Image Name="rankBird.png" />
+          <Image Name="rankFruit.png" />
+          <Image Name="readyBird.png" />
+          <Image Name="readyFruit.png" />
+          <Image Name="scoreOver.png" />
+          <Image Name="setBack.png" />
+          <Image Name="setBackground.png" />
+          <Image Name="slider.png" />
+          <Image Name="sliderTrack.png" />
+          <Image Name="sound.png" />
+          <Image Name="third.png" />
+          <Image Name="title.png" />
+        </Folder>
+        <Image Name="HelloWorld.png" />
+        <Project Name="MainLayer.csd" Type="Scene" />
+        <Project Name="MainScene.csd" Type="Scene" />
+      </RootFolder>
+    </Group>
+  </SolutionFolder>
+</Solution>
