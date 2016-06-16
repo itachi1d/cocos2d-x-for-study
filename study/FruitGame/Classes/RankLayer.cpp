@@ -55,8 +55,10 @@ void RankLayer::initTile(TYPE id)
 	this->removeAllChildren();
 	auto rootNode = CSLoader::createNode("RankLayer.csb");
 	addChild(rootNode);
-	string name = "title" + StringUtils::format("%d", TYPE::FRUIT == m_id ? 1 : 2);
-	(rootNode->getChildByName(name))->setVisible(true);
+	string titleName = "title" + StringUtils::format("%d", TYPE::FRUIT == m_id ? 1 : 2);
+	string bgName = "bg" + StringUtils::format("%d", TYPE::FRUIT == m_id ? 1 : 2);
+	(rootNode->getChildByName(titleName))->setVisible(true);
+	(rootNode->getChildByName(bgName))->setVisible(true);
 	labelSprite = Sprite::create();
 	addChild(labelSprite);
 	load();
@@ -80,14 +82,11 @@ void RankLayer::initTile(TYPE id)
 	}
 	m_next_button = static_cast<Button*>(rootNode->getChildByName("NextBtn"));
 	m_menu_button = static_cast<Button*>(rootNode->getChildByName("MenuBtn"));
-	m_next_button->addTouchEventListener(CC_CALLBACK_2(RankLayer::menuCallBack0, this));
-	m_menu_button->addTouchEventListener(CC_CALLBACK_2(RankLayer::menuCallBack0, this));
+	m_next_button->addClickEventListener(CC_CALLBACK_1(RankLayer::menuCallBack0, this));
+	m_menu_button->addClickEventListener(CC_CALLBACK_1(RankLayer::menuCallBack0, this));
 }
-
-void RankLayer::menuCallBack0(Ref*pSender, Widget::TouchEventType type)
+void RankLayer::menuCallBack0(Ref*pSender)
 {
-	if (type != cocos2d::ui::Widget::TouchEventType::ENDED)
-		return;
 	if (pSender == m_next_button)
 	{
 		initTile(TYPE::FRUIT == m_id ? TYPE::BIRD : TYPE::FRUIT);

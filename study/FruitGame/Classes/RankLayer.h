@@ -27,7 +27,7 @@ public:
 	void save(int);
 	void load();
 	void initTile(TYPE);
-	void menuCallBack0(Ref*pSender, Widget::TouchEventType type);
+	void menuCallBack0(Ref*pSender);
 	CREATE_FUNC(RankLayer);
 private:
 	TYPE m_id;

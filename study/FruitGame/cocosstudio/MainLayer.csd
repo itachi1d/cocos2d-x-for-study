@@ -17,7 +17,7 @@
             <FileData Type="Normal" Path="pic/morning.png" Plist="" />
             <BlendFunc Src="1" Dst="771" />
           </AbstractNodeData>
-          <AbstractNodeData Name="night" ActionTag="2098594720" Tag="7" IconVisible="False" ctype="SpriteObjectData">
+          <AbstractNodeData Name="bg" ActionTag="2098594720" Tag="7" IconVisible="False" ctype="SpriteObjectData">
             <Size X="540.0000" Y="720.0000" />
             <AnchorPoint />
             <Position />
@@ -117,6 +117,17 @@
             <NormalFileData Type="Normal" Path="button/exit.png" Plist="" />
             <OutlineColor A="255" R="255" G="0" B="0" />
             <ShadowColor A="255" R="110" G="110" B="110" />
+          </AbstractNodeData>
+          <AbstractNodeData Name="floor" ActionTag="1815220602" Tag="21" IconVisible="False" LeftMargin="0.2403" RightMargin="-300.2404" TopMargin="611.0505" BottomMargin="-131.0505" ctype="SpriteObjectData">
+            <Size X="840.0000" Y="240.0000" />
+            <AnchorPoint />
+            <Position X="0.2403" Y="-131.0505" />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <CColor A="255" R="255" G="255" B="255" />
+            <PrePosition X="0.0004" Y="-0.1820" />
+            <PreSize X="1.5556" Y="0.3333" />
+            <FileData Type="Normal" Path="pic/floor.png" Plist="" />
+            <BlendFunc Src="1" Dst="771" />
           </AbstractNodeData>
         </Children>
       </ObjectData>

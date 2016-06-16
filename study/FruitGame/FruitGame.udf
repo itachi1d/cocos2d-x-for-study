@@ -6,8 +6,9 @@
           <FilePathData Path="MainScene.csd" />
           <FilePathData Path="MainLayer.csd" />
           <FilePathData Path="RankLayer.csd" />
+          <FilePathData Path="SetLayer.csd" />
         </OpenedDocuments>
-        <ActiveDocument Path="RankLayer.csd" />
+        <ActiveDocument Path="MainLayer.csd" />
       </Value>
     </Item>
     <Item Key="CocosRecentOperation">

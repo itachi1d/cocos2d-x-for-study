@@ -1,5 +1,5 @@
 #include "MainLayer.h"
-
+#include "GameTitle.h"
 
 USING_NS_CC;
 
@@ -13,12 +13,19 @@ bool MainLayer::init()
 	addChild(rootNode);
 	initBtns(rootNode);
 
-	effectNode = NodeGrid::create();
-	this->addChild(effectNode);
-	Sprite* title = Sprite::create("pic/title.png");
-	title->setPosition(Point(270, 600));
-	effectNode->addChild(title);
-	effectNode->runAction(RepeatForever::create(Ripple3D::create(2.0f, Size(32, 24), title->getPosition(), 360, 2, 5)));
+	GameTitle *effect = GameTitle::create();
+	this->addChild(effect);
+
+	Sprite* floor = static_cast<Sprite*>(rootNode->getChildByName("floor"));
+	Sprite* bg = static_cast<Sprite*>(rootNode->getChildByName("bg"));
+	float nummm = bg->getContentSize().width - floor->getContentSize().width;
+	floor->runAction(RepeatForever::create(
+			Sequence::create(
+			MoveTo::create(0.9, Point(bg->getContentSize().width - floor->getContentSize().width, floor->getPositionY())),
+			MoveTo::create(0, Point(0, floor->getPositionY())),
+			NULL
+			)
+		));
 	
 	return true;
 }

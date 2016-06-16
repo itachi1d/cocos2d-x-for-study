@@ -6,7 +6,18 @@
       <ObjectData Name="Scene" Tag="13" ctype="GameNodeObjectData">
         <Size X="540.0000" Y="720.0000" />
         <Children>
-          <AbstractNodeData Name="night_1" ActionTag="-297053489" Tag="14" IconVisible="False" ctype="SpriteObjectData">
+          <AbstractNodeData Name="bg2" ActionTag="1349034113" VisibleForFrame="False" Tag="11" IconVisible="False" ctype="SpriteObjectData">
+            <Size X="540.0000" Y="720.0000" />
+            <AnchorPoint />
+            <Position />
+            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+            <CColor A="255" R="255" G="255" B="255" />
+            <PrePosition />
+            <PreSize X="1.0000" Y="1.0000" />
+            <FileData Type="Normal" Path="pic/morning.png" Plist="" />
+            <BlendFunc Src="1" Dst="771" />
+          </AbstractNodeData>
+          <AbstractNodeData Name="bg1" ActionTag="-297053489" VisibleForFrame="False" Tag="14" IconVisible="False" ctype="SpriteObjectData">
             <Size X="540.0000" Y="720.0000" />
             <AnchorPoint />
             <Position />
