@@ -82,6 +82,7 @@
         <Image Name="HelloWorld.png" />
         <Project Name="MainLayer.csd" Type="Scene" />
         <Project Name="MainScene.csd" Type="Scene" />
+        <Project Name="RankLayer.csd" Type="Scene" />
       </RootFolder>
     </Group>
   </SolutionFolder>

@@ -62,4 +62,8 @@ void MainLayer::onBtnClickHander(Ref*pSender, Widget::TouchEventType type)
 	{
 
 	}
+	else if (pSender == m_rank_button)
+	{
+		GameSceneManager::getInstance()->goToRankScene();
+	}
 }

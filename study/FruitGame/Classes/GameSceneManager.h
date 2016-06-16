@@ -16,10 +16,12 @@ public:
 	static GameSceneManager *manager;
 public:
 	void createMainScene();
+	void goToMainScene();
 	void goToGameScene();
 	void goToFruitScene();
 	void goToBirdScene();
 	void goToMusicScene();
+	void goToRankScene();
 	static GameSceneManager* getInstance();
 };
 
