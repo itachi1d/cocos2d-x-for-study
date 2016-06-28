@@ -1,5 +1,6 @@
 #include "MainLayer.h"
 #include "GameTitle.h"
+#include "SimpleAudioEngine.h"
 
 USING_NS_CC;
 
@@ -15,6 +16,8 @@ bool MainLayer::init()
 
 	GameTitle *effect = GameTitle::create();
 	this->addChild(effect);
+
+	CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic("sounds/playscene.mp3", true);
 
 	Sprite* floor = static_cast<Sprite*>(rootNode->getChildByName("floor"));
 	Sprite* bg = static_cast<Sprite*>(rootNode->getChildByName("bg"));
@@ -67,7 +70,7 @@ void MainLayer::onBtnClickHander(Ref*pSender, Widget::TouchEventType type)
 	}
 	else if (pSender == m_setting_button)
 	{
-
+		GameSceneManager::getInstance()->goToSetScene();
 	}
 	else if (pSender == m_rank_button)
 	{

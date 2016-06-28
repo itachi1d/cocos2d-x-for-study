@@ -22,6 +22,7 @@ public:
 	void goToBirdScene();
 	void goToMusicScene();
 	void goToRankScene();
+	void goToSetScene();
 	static GameSceneManager* getInstance();
 };
 

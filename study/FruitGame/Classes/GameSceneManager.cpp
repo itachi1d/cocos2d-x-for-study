@@ -1,6 +1,7 @@
 #include "GameSceneManager.h"
 #include "MainLayer.h"
 #include "RankLayer.h"
+#include "SetLayer.h"
 
 GameSceneManager::GameSceneManager()
 {
@@ -55,6 +56,15 @@ void GameSceneManager::goToRankScene()
 {
 	mainScene = Scene::create();
 	RankLayer *layer = RankLayer::create();
+	mainScene->addChild(layer);
+	layer->sceneManager = this;
+	Director::getInstance()->replaceScene(mainScene);
+}
+
+void GameSceneManager::goToSetScene()
+{
+	mainScene = Scene::create();
+	SetLayer *layer = SetLayer::create();
 	mainScene->addChild(layer);
 	layer->sceneManager = this;
 	Director::getInstance()->replaceScene(mainScene);
